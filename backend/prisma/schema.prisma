@@ -10,16 +10,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Usuarios {
-  id     Int    @id @default(autoincrement())
-  senha  String
-  perfil String
-}
-
 model Perfis {
   id          Int           @id @default(autoincrement())
   perfil      String
   Comentarios Comentarios[]
+  Usuarios Usuarios[]
+}
+
+model Usuarios {
+  id     Int    @id @default(autoincrement())
+  senha  String
+  id_perfil Int
+  perfil Perfis @relation(fields: [id_perfil], references: [id])
 }
 
 model Equipamentos {
@@ -27,7 +29,7 @@ model Equipamentos {
   equipamento String
   imagem      String
   descricao   String
-  ativo       String
+  ativo       Boolean
   data        DateTime?
   Comentarios Comentarios[]
 }
