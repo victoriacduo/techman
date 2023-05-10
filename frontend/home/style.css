@@ -59,8 +59,9 @@ main {
 .clone {
     display: flex;
     flex-direction: row;
-    width: 70vw;
-    height: 20vh;
+    width: 95vw;
+    height: 28vh;
+    border-bottom: 1px dashed #35797d;
 }
 
 .productPic {
@@ -81,6 +82,7 @@ main {
 .info {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 70vw;
     height: 250px;
     margin-left: 15px;
@@ -91,17 +93,83 @@ main {
     flex-direction: row;
     justify-content: space-between;
     width: 120px;
-    height: 30px;
-    margin-top: 10px;
+    height: 45px;
 }
 
 .comentario,
 .delete {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
 }
 
 .botoezes>button {
     background: none;
     border: none;
+}
+
+.delComent-modal,
+.comentar-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #eeedeb5e;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    width: 35vw;
+    height: 30vh;
+    border: 1px solid #000000;
+    background-color: #FFFFFF;
+    padding: 15px 20px;
+}
+
+#confirmaDelete {
+    height: 40px;
+    width: 170px;
+    border-radius: 10px;
+    border: 1px solid black;
+    color: #FFFFFF;
+    background-color: red;
+}
+
+#sendComentario {
+    height: 40px;
+    width: 170px;
+    border-radius: 10px;
+    border: none;
+    color: #FFFFFF;
+    background-color: #35797d;
+}
+
+.close {
+    font-size: 26px;
+    color: #35797d;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+
+#textArea {
+    width: 98%;
+    height: 40px;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    border-bottom: 1px solid #35797d;
+}
+
+.model {
+    display: none;
+    visibility: hidden;
 }
