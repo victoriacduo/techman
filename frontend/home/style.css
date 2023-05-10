@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,700;1,500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 12vh;
+    background-color: #CCE2E2;
+    padding: 10px;
+}
+
+.techman {
+    width: 370px;
+    height: 100px;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+}
+
+#cadEqp {
+    background: none;
+    border: none;
+    color: #35797d;
+    margin-right: 50px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+#exit {
+    background: none;
+    border: none;
+}
+
+.fota {
+    width: 40px;
+    height: 40px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 100vw;
+    height: 88vh;
+    background-color: #EEEDEB;
+}
+
+.clone {
+    display: flex;
+    flex-direction: row;
+    width: 70vw;
+    height: 20vh;
+}
+
+.productPic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45vw;
+    height: 250px;
+    background-color: #FFFFFF;
+    border: 1px solid #35797d;
+}
+
+.pic {
+    width: 250px;
+    height: 200px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    height: 250px;
+    margin-left: 15px;
+}
+
+.botoezes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 120px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.comentario,
+.delete {
+    width: 45px;
+    height: 45px;
+}
+
+.botoezes>button {
+    background: none;
+    border: none;
+}
