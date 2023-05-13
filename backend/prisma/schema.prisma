@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -39,7 +36,7 @@ model Comentarios {
   comentario      String
   id_equipamentos Int
   id_perfil       Int
-  data            DateTime
-  equipamentos    Equipamentos @relation(fields: [id_equipamentos], references: [id])
+  data            DateTime @default(now())
+  equipamentos    Equipamentos @relation(fields: [id_equipamentos], references: [id], onDelete: Cascade)
   perfis          Perfis       @relation(fields: [id_perfil], references: [id])
 }

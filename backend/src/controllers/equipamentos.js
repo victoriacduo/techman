@@ -3,7 +3,15 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const read = async(req, res) => {
-    let equipamentos = await prisma.Equipamentos.findMany();
+    let equipamentos = await prisma.Equipamentos.findMany({
+        include: {
+            Comentarios: {
+                include: {
+                    perfis: true
+                }
+            }
+        }
+    });
     res.status(200).json(equipamentos).end();
 }
 

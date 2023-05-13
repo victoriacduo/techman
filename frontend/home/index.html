@@ -1,63 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TECHMAN - HOME</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      var id = localStorage.getItem("userID");
+      var idPerfil = localStorage.getItem("userIDPerfil");
+      var dayAcess = localStorage.getItem("dayAcess");
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+      const dataAtual = new Date();
+      const diaAtual = dataAtual.getDate();
+      if (dayAcess == diaAtual) {
+        if (id !== "2") {
+          const link = document.createElement("link");
+          link.href = "styleADM.css";
+          link.rel = "stylesheet";
+          document.head.appendChild(link);
+        } else {
+        }
+      } else {
+        window.location.href = "../login/index.html";
+      }
+    </script>
+  </head>
 
-<body>
+  <body onload="carregarEquipamentos()">
     <header>
-        <img class="techman" src="../assets/techman.png" />
-        <div class="right">
-            <button id="cadEqp">Novo equipamento</button>
-            <button id="exit"><img class="fota" src="../assets/logout_sair.png" /></button>
-        </div>
+      <img class="techman" src="../assets/techman.png" />
+      <div class="right">
+        <button id="cadEqp" onclick="document.querySelector('.equipamentos-modal').classList.remove('model')">Novo equipamento</button>
+        <button id="exit" onclick="sair()">
+          <img class="fota" src="../assets/logout_sair.png" />
+        </button>
+      </div>
     </header>
     <main>
-        <div class="clone">
-            <div class="productPic">
-                <img class="pic" src="../assets/Monitor_Dell.png" />
-            </div>
-            <div class="info">
-                <p style="font-size: 30px; color: #B3B3B3; font-weight: 500; font-style: italic;">Nome do Produto e etc
-                </p>
-                <p style="font-size: 20px;"">Duis purus est, viverra sed iaculis eu, iaculis commodo nulla. Mauris volutpat congue ipsum nec
-                    rhoncus. Sed tempor ex sem, eget congue odio tincidunt auctor. Maecenas volutpat porta eros ut
-                    posuere. Sed dictum, turpis nec pellentesque egestas, dui dolor efficitur tellus, in sodales turpis
-                    ligula a lectus. Fusce laoreet enim ut nulla lacinia, in iaculis leo dapibus. Duis mollis congue
-                    quam quis vestibulum. Curabitur egestas dictum accumsan.</p>
-                    <div class=" botoezes">
-                    <button><img class="comentario" src="../assets/comentario.png" /></button>
-                    <button><img class="delete" src="../assets/deletar.png" /></button>
-            </div>
+      <div class="clone model">
+        <div class="productPic">
+          <img class="pic" src="https://static.vecteezy.com/ti/fotos-gratis/p3/6671766-fantastica-lua-magica-luz-e-agua-barco-com-arvore-papel-de-parede-gratis-foto.jpg" />
         </div>
+        <div class="info">
+          <p
+            id="nomeEquipamento"
+            style="
+              font-size: 32px;
+              color: #b3b3b3;
+              font-weight: 500;
+              font-style: italic;
+            "
+          >
+            Nome do Produto e etc
+          </p>
+          <p id="descricao" style="font-size: 20px; margin-top: 10px">
+            Duis purus est, viverra sed iaculis eu, iaculis commodo nulla.
+            Mauris volutpat congue ipsum nec rhoncus. Sed tempor ex sem, eget
+            congue odio tincidunt auctor. Maecenas volutpat porta eros ut
+            posuere. Sed dictum, turpis nec pellentesque egestas, dui dolor
+            efficitur tellus, in sodales turpis ligula a lectus. Fusce laoreet
+            enim ut nulla lacinia, in iaculis leo dapibus. Duis mollis congue
+            quam quis vestibulum. Curabitur egestas dictum accumsan.
+          </p>
+          <div class="botoezes">
+            <button onclick="" class="btnComent">
+              <img class="comentario" src="../assets/comentario.png" />
+            </button>
+            <button onclick="abrirModalDelete(this)" class="btnDel">
+              <img class="delete" src="../assets/deletar.png" />
+            </button>
+          </div>
         </div>
-        </div>
+      </div>
     </main>
-
     <div class="delComent-modal model">
-        <div class="container">
-            <p style="font-size: 26px; font-weight: bold; color: #35797d">Exclusão de Equipamento</p>
-            <p class="close">X</p>
-            <p style="font-size: 20px;">Atenção! Tem certeza que deseja excluir o equipamento? Essa ação não poderá ser
-                desfeita.</p>
-            <button id="confirmaDelete">Excluir</button>
-        </div>
+      <div class="container">
+        <p style="font-size: 26px; font-weight: bold; color: #35797d">
+          Exclusão de Equipamento
+        </p>
+        <p
+          class="close"
+          onclick="document.querySelector('.delComent-modal').classList.add('model')"
+        >
+          X
+        </p>
+        <p style="font-size: 20px">
+          Atenção! Tem certeza que deseja excluir o equipamento? Essa ação não
+          poderá ser desfeita.
+        </p>
+        <button id="confirmaDelete" onclick="excluirEquipamento()">
+          Excluir
+        </button>
+      </div>
     </div>
 
     <div class="comentar-modal model">
-        <div class="container">
-            <p class="close">X</p>
-            <p style="font-size: 26px; font-weight: bold; color: #35797d">Cadastro de comentário</p>
-            <p style="font-size: 20px; color: #B3B3B3; font-style: italic;">Comentário</p>
-            <input id="textArea" />
-            <button id="sendComentario">Cadastrar</button>
-        </div>
+      <div class="container">
+        <p
+          class="close"
+          onclick="document.querySelector('.comentar-modal').classList.add('model')"
+        >
+          X
+        </p>
+        <p style="font-size: 26px; font-weight: bold; color: #35797d">
+          Cadastro de comentário
+        </p>
+        <p style="font-size: 20px; color: #b3b3b3; font-style: italic">
+          Comentário
+        </p>
+        <input id="textArea" onkeyup="habilitarBotao()" />
+        <button
+          id="sendComentario"
+          disabled
+          onclick="cadastrarComentario(this)"
+        >
+          Cadastrar
+        </button>
+      </div>
     </div>
-</body>
 
+    <div class="comentarios-modal model">
+      <div class="container">
+        <p style="font-size: 26px; font-weight: bold; color: #35797d">
+          Comentários
+        </p>
+        <p class="close" onclick="fecharModalComentario()">X</p>
+        <div class="comentarios">
+          <div class="mod-comentario model">
+            <p class="comentop">
+              <span id="perfil">Administrador</span> -
+              <span id="data">10/10/2020</span>
+            </p>
+            <p class="comenbody">asdsadadasdasdasdasdasdsadasdad</p>
+          </div>
+        </div>
+        <button id="addComent" onclick="abrirAdicionarComentario(this)">
+          Adicionar Comentário
+        </button>
+      </div>
+    </div>
+
+    <div class="ms-ok model">
+      <div class="container-ms">
+        <span>Sucesso! Comentário cadastrado para o equipamento.</span>
+      </div>
+    </div>
+
+    <div class="ms-ko model">
+      <div class="container-ms ko">
+        <span>Erro! Não foi possivel cadastrar um comentário.</span>
+      </div>
+    </div>
+
+    <div class="ms-fetch model">
+      <div class="container-ms erro-fetch">
+        <span>Erro! Servidor fora do ar </span>
+        <span> Tentando novamente mais tarde.</span>
+      </div>
+    </div>
+
+    <div class="equipamentos-modal model">
+      <div class="container">
+        <p style="font-size: 26px; font-weight: bold; color: #35797d">
+          Cadastro de equipamento
+        </p>
+        <p class="close" onclick="document.querySelector('.equipamentos-modal').classList.add('model')">X</p>
+        <input type="text" placeholder="Nome" id="nomeEquipamentoCad" onkeyup="habilitarBotaoEq()">
+        <input type="url" placeholder="Endereco da imagem" id="endImage" onkeyup="habilitarBotaoEq()">
+        <textarea name="textEquipamento" id="textEquipamento" cols="30" rows="10" placeholder="Descrição" onkeyup="habilitarBotaoEq()"></textarea>
+        <div class="check">
+          <input type="checkbox" id="checkeq" checked value="true" onclick="checkeq(this.parentNode)">
+          <span>Ativo</span>
+        </div>
+        <button id="addEqui" onclick="adicionarEquipamento(this)" disabled="true">
+          Cadastrar
+        </button>
+      </div>
+    </div>
+  </body>
+  <script src="./script.js"></script>
 </html>

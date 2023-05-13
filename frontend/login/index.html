@@ -5,35 +5,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TECHMAN | Login</title>
+    <title>TECHMAN - Login</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        localStorage.clear();
+    </script>
 </head>
 
 <body>
     <main>
         <div class="logo">
-            <img class="techman" src="../assets/techman.png" />
+            <img class="techman" src="../assets/techman.png"/>
         </div>
         <div class="senha-container">
+            <div class="alert model">
+                <span>ERRO: Senha incorreta.</span>
+            </div>
             <div class="senha-display">
-                <span class="senha"></span>
+                <span type="password" class="senha"></span>
             </div>
             <div class="numeros-container">
-                <button class="numero">1</button>
-                <button class="numero">2</button>
-                <button class="numero">3</button>
-                <button class="numero">4</button>
-                <button class="numero">5</button>
-                <button class="numero">6</button>
-                <button class="numero">7</button>
-                <button class="numero">8</button>
-                <button class="numero">9</button>
-                <button class="numero">C</button>
-                <button class="numero">0</button>
-                <button class="delete"><img class="fota" src="../assets/enter.png" /></button>
+                <button class="numero" id="1" onclick="addSenha(this)">1</button>
+                <button class="numero" id="2" onclick="addSenha(this)">2</button>
+                <button class="numero" id="3" onclick="addSenha(this)">3</button>
+                <button class="numero" id="4" onclick="addSenha(this)">4</button>
+                <button class="numero" id="5" onclick="addSenha(this)">5</button>
+                <button class="numero" id="6" onclick="addSenha(this)">6</button>
+                <button class="numero" id="7" onclick="addSenha(this)">7</button>
+                <button class="numero" id="8" onclick="addSenha(this)">8</button>
+                <button class="numero" id="9" onclick="addSenha(this)">9</button>
+                <button class="numero" onclick="limparCalc()">C</button>
+                <button class="numero" id="0" onclick="addSenha(this)">0</button>
+                <button class="delete" onclick="login()" disabled="true"><img class="fota" src="../assets/enter.png" /></button>
             </div>
         </div>
     </main>
 </body>
-
+<script src="./script.js"></script>
 </html>

@@ -7,6 +7,11 @@
     font-family: 'Rubik', sans-serif;
 }
 
+.model {
+    display: none !important;
+    visibility: hidden;
+}
+
 header {
     display: flex;
     flex-direction: row;
@@ -40,6 +45,7 @@ header {
 #exit {
     background: none;
     border: none;
+    cursor: pointer;
 }
 
 .fota {
@@ -50,18 +56,22 @@ header {
 main {
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 30px;
     width: 100vw;
     height: 88vh;
     background-color: #EEEDEB;
+    gap: 50px;
+    overflow-y: scroll;
 }
 
 .clone {
     display: flex;
     flex-direction: row;
-    width: 95vw;
-    height: 28vh;
-    border-bottom: 1px dashed #35797d;
+    width: 70vw;
+    height: 35vh;
+    border-bottom: 2px solid #35797d;
+    padding-bottom: 50px;
 }
 
 .productPic {
@@ -82,7 +92,6 @@ main {
 .info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 70vw;
     height: 250px;
     margin-left: 15px;
@@ -93,13 +102,14 @@ main {
     flex-direction: row;
     justify-content: space-between;
     width: 120px;
-    height: 45px;
+    height: 30px;
+    margin-top: 10px;
 }
 
 .comentario,
 .delete {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
 }
 
 .botoezes>button {
@@ -108,7 +118,12 @@ main {
 }
 
 .delComent-modal,
-.comentar-modal {
+.comentar-modal,
+.comentarios-modal,
+.ms-ok,
+.ms-ko,
+.ms-fetch,
+.equipamentos-modal {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -128,7 +143,7 @@ main {
     position: relative;
     width: 35vw;
     height: 30vh;
-    border: 1px solid #000000;
+    border: 1px solid #646464;
     background-color: #FFFFFF;
     padding: 15px 20px;
 }
@@ -142,7 +157,9 @@ main {
     background-color: red;
 }
 
-#sendComentario {
+#sendComentario,
+#addComent,
+#addEqui {
     height: 40px;
     width: 170px;
     border-radius: 10px;
@@ -158,6 +175,7 @@ main {
     top: 0;
     right: 0;
     padding: 10px;
+    cursor: pointer;
 }
 
 #textArea {
@@ -169,7 +187,87 @@ main {
     border-bottom: 1px solid #35797d;
 }
 
-.model {
-    display: none;
-    visibility: hidden;
+.comentarios {
+    flex: 1;
+    font-style: italic;
+    color: #7c7c7c;
+    font-size: 14pt;
+    margin: 20px;
+    max-height: 70vh;
+    overflow-y: scroll;
+}
+
+.comentarios::-webkit-scrollbar {
+    width: 0px;
+}
+
+.mod-comentario {
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 1px #35797d dotted;
+    height: fit-content;
+}
+
+.comentop {
+    font-weight: bold;
+    font-size: 16pt;
+    margin-bottom: 10px;
+}
+
+.comentarios-modal>.container {
+    width: 900px;
+    height: min-content;
+}
+
+.container-ms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20pt;
+    background-color: rgb(204, 240, 207);
+    border: 5px solid rgb(3, 255, 3);
+    width: 45%;
+    height: 140px;
+    letter-spacing: 2px;
+}
+
+.ko {
+    background-color: rgb(240, 204, 204);
+    border: 5px solid rgb(255, 3, 3);
+}
+
+.erro-fetch {
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(240, 204, 204, 0);
+    border: none;
+    color: #7c7c7c;
+    width: 50%;
+}
+
+.equipamentos-modal>.container {
+    height: 50vh!important;
+    width: 55vw!important;
+}
+
+#nomeEquipamentoCad, #endImage {
+    height: 40px;
+    padding: 0px 0px 0px 10px;
+    border: none;
+    border-bottom: 2px solid #7c7c7c;
+    font-size: 12pt;
+    outline: none;
+}
+
+#textEquipamento {
+    border: none;
+    border-bottom: 2px solid #7c7c7c;
+    padding: 0px 0px 0px 10px;
+    font-size: 12pt;
+    height: 100px;
+    outline: none;
+}
+
+#checkeq {
+    background-color: #000;
 }
